@@ -14,7 +14,7 @@ module.exports = function validateRegisterInput(data) {
     error.name = "Name field is required";
   }
   if (!Validator.isLength(data.name, { min: 3, max: 30 })) {
-    error.name = "Name must be between 3 and 30 characters";
+    error.name = "Name must be between 3 to 30 characters";
   }
 
 

@@ -13,21 +13,8 @@ module.exports = (req, res, next) => {
     return res.status(400).json(error);
   }
 
-  const {
-    field,
-    name,
-    email,
-    password,
-    contact,
-    designation,
-    image,
-    charges,
-    skills,
-    about,
-    experience,
-    socialLink,
-    status,
-  } = req.body;
+  const { name, jobTitle, password, email, contact, designation, status } =
+    req.body;
 
   bcrypt.hash(password, 10, function (err, hash) {
     if (err) {
@@ -35,21 +22,13 @@ module.exports = (req, res, next) => {
         msg: "Somthing Wrong, Try Later !",
         err: err,
       });
-      
     } else {
       var user = new UserDB({
-        field:field,
         name: name,
-        email: email,
+        jobTitle: jobTitle,
         password: hash,
+        email: email,
         contact: contact,
-        designation: designation,
-        image: image,
-        charges:charges,
-        skills: skills,
-        about: about,
-        experience: experience,
-        socialLink: socialLink,
         status: status,
       });
       user
@@ -62,7 +41,7 @@ module.exports = (req, res, next) => {
         })
         .catch((err) => {
           res.status(500).send({
-            mesaage: err.message || "some error occured while creating User",
+            mesaage: err.message || "some error occured while creating data",
           });
         });
     }
