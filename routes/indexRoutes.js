@@ -6,5 +6,7 @@ router.use("/user", require("./userRoute"));
 
 router.use("/admin", require("./AdminRoutes"));
 
+router.use("/partner", require("./partner"));
+
 // ------------------- Exporting --------------------
 module.exports = router;
